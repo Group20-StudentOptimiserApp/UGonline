@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "UGOonline",
-    "slug": "UGOonline",
+    "name": "UGonline",
+    "slug": "UGonline",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
