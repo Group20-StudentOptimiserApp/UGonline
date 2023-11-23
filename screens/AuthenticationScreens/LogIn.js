@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 
+
 const LoginScreen =({navigation}) => {
     const [studentEmail, setStudentEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +22,7 @@ const LoginScreen =({navigation}) => {
             <ScrollView>
             <View style={styles.container1}>
             <Image
-            source={require('../assets/projectImages/UoG.png')}
+            source={require('../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             <Text style={{textAlign:"center", color: "#002D5D", fontSize: 22, fontFamily: "Poppins_700Bold", marginTop: 28,}}>Sign in to your account</Text>

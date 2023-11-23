@@ -10,7 +10,7 @@ const Splash = ({navigation}) =>{
         <View style={styles.container} >
             <View style={styles.container1}>
                 <Image 
-                source={require('../assets/screenImages/UoGG.png')}
+                source={require('../../assets/projectImages/UoGG.png')}
                 style={{width: 209, height: 209, position: 'absolute', bottom: -100, alignSelf: 'center'}}
                 />
             </View>

@@ -3,8 +3,8 @@ import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from './screens/AuthenticationScreens/LoginScreen';
-import SignUpScreen from './screens/AuthenticationScreens/SignUpScreen';
+import LoginScreen from './screens/AuthenticationScreens/LogIn';
+import SignUpScreen from './screens/AuthenticationScreens/SignUp';
 import Splash from './screens//HomeScreens/splashHome';
 import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700Bold, Poppins_800ExtraBold} from '@expo-google-fonts/poppins';
 import * as Font from 'expo-font'

@@ -23,7 +23,7 @@ const SignUpScreen =({navigation}) => {
             <ScrollView>
             <View style={styles.container1}>
             <Image
-            source={require('../assets/projectImages/UoG.png')}
+            source={require('../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             <Text style={{textAlign:"center", color: "#002D5D", fontSize: 22, fontFamily: "Poppins_700Bold", marginTop: 28,}}>New here? Join us now</Text>
