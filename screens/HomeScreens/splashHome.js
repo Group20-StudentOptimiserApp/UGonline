@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Image } from "react-native";
 import { Button, Text} from "@rneui/themed";
-
+import { color, font} from "../../global/styles";
 
 
 const Splash = ({navigation}) =>{
@@ -15,22 +15,22 @@ const Splash = ({navigation}) =>{
                 />
             </View>
             <View style={styles.conatiner2}>
-                <View style={{marginBottom: 48, marginTop: 40}}>
+                <View style={{marginBottom: 20, marginTop: 60}}>
                     <Text  style={styles.header}>Welcome to the</Text>
                     <Text  style={styles.header}>University of Ghana</Text>
                 </View>
                 <Button 
                     title="Let's get started" 
                     containerStyle={styles.button} 
-                    buttonStyle={{backgroundColor: '#002D5D',borderRadius: 8,}} 
-                    titleStyle={{color: '#DCDCDC', fontSize: 20, fontFamily: 'Poppins_500Medium',}}
+                    buttonStyle={{backgroundColor: color.primary,borderRadius: 8,}} 
+                    titleStyle={{color: color.lightGrey, fontSize: 20, fontFamily: font.medium,}}
                     onPress={()=>navigation.navigate('SignUp')}
                     />
                 <Button 
                     title="Login" 
                     containerStyle={styles.button}
-                    buttonStyle={{backgroundColor: '#D0AA66',borderRadius: 8,}} 
-                    titleStyle={{color: '#404040', fontSize: 20, fontFamily: 'Poppins_500Medium'}}
+                    buttonStyle={{backgroundColor: color.secondary,borderRadius: 8,}} 
+                    titleStyle={{color: color.dark, fontSize: 20, fontFamily: font.medium}}
                     onPress={()=>navigation.navigate('Login')}
                     />
             </View>
@@ -43,13 +43,13 @@ export default Splash;
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#F7F9FF"
+        backgroundColor: color.background,
     },
     container1:{
         // flex: 1,
         width: '100%',
         height: '40%',
-        backgroundColor: "#fff"
+        backgroundColor: color.light,
     },
     conatiner2:{
         flex: 1,
@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     },
     header:{
         fontSize: 32,
-        color: '#002D5D',
+        color: color.primary,
         textAlign: 'center',
-        fontFamily: 'Poppins_600SemiBold',
+        fontFamily: font.semiBold,
     },
 })

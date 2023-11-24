@@ -4,7 +4,7 @@ import { Button, Input} from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
-
+import { color, font } from "../../global/styles";
 
 const LoginScreen =({navigation}) => {
     const [studentEmail, setStudentEmail] = useState('');
@@ -25,7 +25,7 @@ const LoginScreen =({navigation}) => {
             source={require('../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
-            <Text style={{textAlign:"center", color: "#002D5D", fontSize: 22, fontFamily: "Poppins_700Bold", marginTop: 28,}}>Sign in to your account</Text>
+            <Text style={{textAlign:"center", color: color.primary, fontSize: 22, fontFamily: font.bold, marginTop: 28,}}>Sign in to your account</Text>
             <View style={styles.inputContainers}>
                 <Input
                     placeholder="Student email" 
@@ -59,8 +59,8 @@ const LoginScreen =({navigation}) => {
                     />
             </View>
             <Button onPress={signIn} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: 'Poppins_500Medium',}} buttonStyle={styles.buttonS} title='Log in'/>
-            <Text style={{fontFamily: 'Poppins_400Regular', fontSize: 16, color: '#1E1D1D'}}>Don't have an account <Text style={{color:'#D0AA66', fontFamily: 'Poppins_700Bold'}} onPress={()=>navigation.navigate('SignUp')}>Sign up here</Text></Text>
-            <Text style={{fontFamily: 'Poppins_400Regular', fontSize: 16, color: '#1E1D1D', marginTop: 20}}>Forgot your password?</Text>
+            <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D'}}>Don't have an account <Text style={{color: color.secondary, fontFamily: font.bold}} onPress={()=>navigation.navigate('SignUp')}>Sign up here</Text></Text>
+            <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D', marginTop: 20}}>Forgot your password?</Text>
             </View>
             <View style={styles.footer}>
                 <Text style={styles.footerText}> Terms and conditions</Text>
@@ -80,7 +80,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: "#F7F9FF",
+        backgroundColor: color.background,
         
     },
     container1:{
@@ -102,14 +102,14 @@ const styles = StyleSheet.create({
         
     },
     buttonS:{
-        backgroundColor: "#002D5D",
+        backgroundColor: color.primary,
         // backgroundColor: "#1AA7EC",
         borderRadius: 10,
         padding: 6,
     },
     input:{
         fontSize: 18,
-        fontFamily: 'Poppins_400Regular',
+        fontFamily: font.regular,
     },
     inputstyle:{
         marginVertical: 4,
@@ -117,13 +117,13 @@ const styles = StyleSheet.create({
     },
     inputContainer:{
         borderWidth: 0,
-        borderColor: "#fff",
+        borderColor: color.light,
         padding: 4,
         // paddingHorizontal: 12,
         paddingLeft: 14,
         // fontSize: 16,
         borderRadius: 10,
-        backgroundColor: "#FFF",
+        backgroundColor: color.light,
         shadowRadius: 8,
         shadowOpacity: 0.2,
         shadowColor: "#ccc",
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
 
     footerText:{
         fontSize: 13,
-        fontFamily: 'Poppins_400Regular',
+        fontFamily: font.regular,
         color: '#1E1D1D'
     }
 })
