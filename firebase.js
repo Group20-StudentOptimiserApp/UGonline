@@ -3,14 +3,22 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth"
 
 
+// const firebaseConfig = {
+//     apiKey: "AIzaSyB9HzNE4jBCMNGari2c9M6UknqK-pM1Ii4",
+//     authDomain: "group20-ugonline.firebaseapp.com",
+//     projectId: "group20-ugonline",
+//     storageBucket: "group20-ugonline.appspot.com",
+//     messagingSenderId: "43999445882",
+//     appId: "1:43999445882:web:613f0679afd103286d0cc3"
+// };
 const firebaseConfig = {
-    apiKey: "AIzaSyBtE7DikFVaegmFbDN6HNZPRRgKE86eSbk",
-    authDomain: "ugonline-fd1fb.firebaseapp.com",
-    projectId: "ugonline-fd1fb",
-    storageBucket: "ugonline-fd1fb.appspot.com",
-    messagingSenderId: "1049358467143",
-    appId: "1:1049358467143:web:9a35b006f2973155943162"
-};
+    apiKey: "AIzaSyDcH8QvNhc8tdLE5zkJadG3pvEL53o19e4",
+    authDomain: "virtual-uni-e3c76.firebaseapp.com",
+    projectId: "virtual-uni-e3c76",
+    storageBucket: "virtual-uni-e3c76.appspot.com",
+    messagingSenderId: "796661888835",
+    appId: "1:796661888835:web:056c72cd0f9c8503fc61f6"
+  };
 
 
 let app;
