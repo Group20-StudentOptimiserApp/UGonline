@@ -1,19 +1,45 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity, ScrollView, Alert } from "react-native";
 import { Button, Input} from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { color, font } from "../../global/styles";
 
+import { auth } from "../../firebase";
+import { Snackbar } from "react-native-paper";
+
 const LoginScreen =({navigation}) => {
-    const [studentEmail, setStudentEmail] = useState('');
+    
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isValid, setIsValid] = useState(true)
 
     
 
-    const signIn = () =>{
-
+    const onSignIn = () => {
+        auth.signInWithEmailAndPassword(email, password)
+            .then((result)=>{
+                console.log(result)
+            })
+            .catch((error)=>{
+                // console.log(error)
+                if(error.code === 'auth/invalid-email'){
+                    setIsValid({bool : true, boolSnack: true, message: "The email address is invalid"});
+                }
+                else if(error.code === 'auth/missing-password'){
+                    setIsValid({bool : true, boolSnack: true, message: "Password is required to login"});
+                }
+                else if(error.code === 'auth/invalid-login-credentials'){
+                    setIsValid({bool : true, boolSnack: true, message: "Invalid Credentials. Please try again"});
+                }
+                else if(error.code === 'auth/invalid-credential'){
+                    setIsValid({bool : true, boolSnack: true, message: "Invalid Credentials. Please try again"});
+                }
+                else{
+                    Alert.alert(error.code)
+                }
+            })
     }
     
     return(
@@ -36,8 +62,8 @@ const LoginScreen =({navigation}) => {
                 />}
                     // autoFocus 
                     type="email"
-                    value={studentEmail}
-                    onChangeText={(text)=>setStudentEmail(text)}
+                    value={email}
+                    onChangeText={(email)=>setEmail(email)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
@@ -52,13 +78,13 @@ const LoginScreen =({navigation}) => {
                     secureTextEntry 
                     type="password"
                     value={password}
-                    onChangeText={(text)=>setPassword(text)}
+                    onChangeText={(password)=>setPassword(password)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
                     />
             </View>
-            <Button onPress={signIn} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: 'Poppins_500Medium',}} buttonStyle={styles.buttonS} title='Log in'/>
+            <Button onPress={() => onSignIn()} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: 'Poppins_500Medium',}} buttonStyle={styles.buttonS} title='Log in'/>
             <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D'}}>Don't have an account <Text style={{color: color.secondary, fontFamily: font.bold}} onPress={()=>navigation.navigate('SignUp')}>Sign up here</Text></Text>
             <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D', marginTop: 20}}>Forgot your password?</Text>
             </View>
@@ -68,6 +94,15 @@ const LoginScreen =({navigation}) => {
             </View>
             </ScrollView>
             <StatusBar style="auto"/>
+            <Snackbar 
+                visible={isValid.boolSnack}
+                duration={4000}
+                onDismiss={()=>{setIsValid({boolSnack: false})}}
+                style={{backgroundColor:"red",}}
+                
+            >
+                {isValid.message}
+            </Snackbar>
         </View>
         
         
