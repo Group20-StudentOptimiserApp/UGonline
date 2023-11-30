@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { color, font } from "../../global/styles";
+import { Ionicons } from "@expo/vector-icons";
 
 import { auth, db } from "../../firebase";
 import { Snackbar } from "react-native-paper";
@@ -16,7 +17,8 @@ const SignUpScreen =({navigation}) => {
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
     const [isValid, setIsValid] = useState(true);
-
+    const [passwordVisible, setPasswordVisible] = useState(true)
+    const [passwordVisible1, setPasswordVisible1] = useState(true)
 
 
     const onSignUp = () => {
@@ -125,7 +127,13 @@ const SignUpScreen =({navigation}) => {
                         size={24}
                         color= '#999999'
                 />}
-                    secureTextEntry 
+                    rightIcon={<Ionicons
+                        name={passwordVisible ? "eye" : "eye-off"}
+                        onPress={() => setPasswordVisible(!passwordVisible)}
+                        size={24}
+                        color= '#444444'
+                />}
+                    secureTextEntry = {passwordVisible}
                     type="password"
                     value={password}
                     onChangeText={(password)=>setPassword(password)}
@@ -140,7 +148,13 @@ const SignUpScreen =({navigation}) => {
                         size={24}
                         color= '#999999'
                 />}
-                    secureTextEntry 
+                    rightIcon={<Ionicons
+                        name={passwordVisible1 ? "eye" : "eye-off"}
+                        onPress={() => setPasswordVisible1(!passwordVisible1)}
+                        size={24}
+                        color= '#444444'
+                />}
+                    secureTextEntry = {passwordVisible1}
                     type="password1"
                     value={password1}
                     onChangeText={(password1)=>setPassword1(password1)}
@@ -221,6 +235,7 @@ const styles = StyleSheet.create({
         padding: 4,
         // paddingHorizontal: 12,
         paddingLeft: 14,
+        paddingRight: 14,
         // fontSize: 16,
         borderRadius: 10,
         backgroundColor: color.light,

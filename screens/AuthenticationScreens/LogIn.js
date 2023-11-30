@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { color, font } from "../../global/styles";
+import { Ionicons } from "@expo/vector-icons";
 
 import { auth } from "../../firebase";
 import { Snackbar } from "react-native-paper";
@@ -14,7 +15,8 @@ const LoginScreen =({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isValid, setIsValid] = useState(true)
-
+    const [passwordVisible, setPasswordVisible] = useState(true)
+   
     
 
     const onSignIn = () => {
@@ -75,7 +77,13 @@ const LoginScreen =({navigation}) => {
                         size={24}
                         color= '#999999'
                 />}
-                    secureTextEntry 
+                    rightIcon={<Ionicons
+                        name={passwordVisible ? "eye" : "eye-off"}
+                        onPress={() => setPasswordVisible(!passwordVisible)}
+                        size={24}
+                        color= '#444444'
+                />}
+                    secureTextEntry = {passwordVisible}
                     type="password"
                     value={password}
                     onChangeText={(password)=>setPassword(password)}
@@ -156,6 +164,7 @@ const styles = StyleSheet.create({
         padding: 4,
         // paddingHorizontal: 12,
         paddingLeft: 14,
+        paddingRight: 14,
         // fontSize: 16,
         borderRadius: 10,
         backgroundColor: color.light,
