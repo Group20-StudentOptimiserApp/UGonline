@@ -4,13 +4,12 @@ import "firebase/compat/auth"
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBEGTfwIUo5jdNZPrr7SxURcvIuYNCJBvI",
-    authDomain: "group-20-92566.firebaseapp.com",
-    projectId: "group-20-92566",
-    storageBucket: "group-20-92566.appspot.com",
-    messagingSenderId: "766275521716",
-    appId: "1:766275521716:web:e86497b3c3a43575479be1",
-    measurementId: "G-8S25ZXX9R8"
+    apiKey: "AIzaSyBtE7DikFVaegmFbDN6HNZPRRgKE86eSbk",
+    authDomain: "ugonline-fd1fb.firebaseapp.com",
+    projectId: "ugonline-fd1fb",
+    storageBucket: "ugonline-fd1fb.appspot.com",
+    messagingSenderId: "1049358467143",
+    appId: "1:1049358467143:web:9a35b006f2973155943162"
 };
 
 
