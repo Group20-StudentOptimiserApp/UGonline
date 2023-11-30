@@ -22,7 +22,7 @@ const SignUpScreen =({navigation}) => {
 
 
     const onSignUp = () => {
-        let regex = /^[a-zA-Z]+$/;
+        let regex = /^[a-zA-Z\s]+$/;
 
         if(name.length == 0){
             setIsValid({bool : true, boolSnack: true, message: "Username field cannot be empty"})
@@ -121,7 +121,7 @@ const SignUpScreen =({navigation}) => {
                     />
                 
                 <Input
-                    placeholder="Create Password" 
+                    placeholder="Create a password" 
                     leftIcon={<FontAwesome
                         name='lock'
                         size={24}
@@ -142,7 +142,7 @@ const SignUpScreen =({navigation}) => {
                     inputStyle={styles.inputstyle}
                     />
                 <Input
-                    placeholder="Confirm Password" 
+                    placeholder="Confirm your password" 
                     leftIcon={<FontAwesome
                         name='lock'
                         size={24}
