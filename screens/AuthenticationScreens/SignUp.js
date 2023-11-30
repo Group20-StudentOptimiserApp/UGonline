@@ -6,16 +6,74 @@ import { useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import { color, font } from "../../global/styles";
 
+import { auth, db } from "../../firebase";
+import { Snackbar } from "react-native-paper";
+
 const SignUpScreen =({navigation}) => {
-    const [studentEmail, setStudentEmail] = useState('');
-    const [userName, setUserName] = useState('');
+
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
+    const [isValid, setIsValid] = useState(true);
 
-    
 
-    const signUp = () =>{
 
+    const onSignUp = () => {
+        let regex = /^[a-zA-Z]+$/;
+
+        if(name.length == 0){
+            setIsValid({bool : true, boolSnack: true, message: "Username field cannot be empty"})
+            return;
+        }
+        if(name.length < 3){
+            setIsValid({bool : true, boolSnack: true, message: "Username must have at least 3 characters"})
+            return;
+        }
+        if(regex.test(name) == false){
+            setIsValid({bool : true, boolSnack: true, message: "Invalid input type for name. Only accepts string characters"})
+            return;
+        }
+        if(email.length == 0){
+            setIsValid({bool : true, boolSnack: true, message: "Cannot have an empty field for email"})
+            return;
+        }
+        if(password.length == 0){
+            setIsValid({bool : true, boolSnack: true, message: "Cannot have an empty field for password"})
+            return;
+        }
+        if(password.length < 6){
+            setIsValid({bool : true, boolSnack: true, message: "password must be at least 6 characters"})
+            return;
+        }
+        if(password === password1){
+            auth.createUserWithEmailAndPassword(email, password)
+            .then((result)=>{
+                db.collection("users")
+                .doc(auth.currentUser.uid)
+                .set({
+                    name,
+                    email
+                })
+                console.log(result)
+            })
+            .catch((error)=>{
+                console.log(error)
+                if(error.code === 'auth/email-already-in-use'){
+                    setIsValid({bool : true, boolSnack: true, message: "Email already exists"})
+                }
+                else if(error.code === 'auth/invalid-email'){
+                    setIsValid({bool : true, boolSnack: true, message: "The email address is invalid"});
+                }
+                else{
+                    Alert.alert(error.code)
+                }
+            })
+        }
+        else{
+            setIsValid({bool : true, boolSnack: true, message: "passwords do not match"})
+            return;
+        }
     }
     
     return(
@@ -30,6 +88,21 @@ const SignUpScreen =({navigation}) => {
             <Text style={{textAlign:"center", color: color.primary, fontSize: 22, fontFamily: font.bold, marginTop: 28,}}>New here? Join us now</Text>
             <View style={styles.inputContainers}>
                 <Input
+                    placeholder="Username" 
+                    leftIcon={<FontAwesome
+                        name='user'
+                        size={24}
+                        color= '#999999'
+                />}
+                    type="text"
+                    value={name}
+                    onChangeText={(name)=>setName(name)}
+                    style={styles.input}
+                    inputContainerStyle={styles.inputContainer}
+                    inputStyle={styles.inputstyle}
+                    />
+
+                <Input
                     placeholder="Student email" 
                     leftIcon={<FontAwesome
                         name='envelope'
@@ -38,26 +111,13 @@ const SignUpScreen =({navigation}) => {
                 />}
                     // autoFocus 
                     type="email"
-                    value={studentEmail}
-                    onChangeText={(text)=>setStudentEmail(text)}
+                    value={email}
+                    onChangeText={(email)=>setEmail(email)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
                     />
-                <Input
-                    placeholder="Username" 
-                    leftIcon={<FontAwesome
-                        name='user'
-                        size={24}
-                        color= '#999999'
-                />}
-                    type="text"
-                    value={userName}
-                    onChangeText={(text)=>setUserName(text)}
-                    style={styles.input}
-                    inputContainerStyle={styles.inputContainer}
-                    inputStyle={styles.inputstyle}
-                    />
+                
                 <Input
                     placeholder="Create Password" 
                     leftIcon={<FontAwesome
@@ -68,7 +128,7 @@ const SignUpScreen =({navigation}) => {
                     secureTextEntry 
                     type="password"
                     value={password}
-                    onChangeText={(text)=>setPassword(text)}
+                    onChangeText={(password)=>setPassword(password)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
@@ -83,14 +143,14 @@ const SignUpScreen =({navigation}) => {
                     secureTextEntry 
                     type="password1"
                     value={password1}
-                    onChangeText={(text)=>setPassword1(text)}
+                    onChangeText={(password1)=>setPassword1(password1)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
-                    onSubmitEditing={signUp}
+                    // onSubmitEditing={signUp}
                     />
             </View>
-            <Button onPress={signUp} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: font.medium,}} buttonStyle={styles.buttonS} title='Sign up'/>
+            <Button onPress={()=>onSignUp()} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: font.medium,}} buttonStyle={styles.buttonS} title='Sign up'/>
             <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D'}}>Already have an account? <Text style={{color:color.secondary, fontFamily: font.bold}} onPress={()=>navigation.navigate('Login')}>Log in here</Text></Text>
             </View>
             <View style={styles.footer}>
@@ -99,6 +159,15 @@ const SignUpScreen =({navigation}) => {
             </View>
             </ScrollView>
             <StatusBar style="auto"/>
+            <Snackbar 
+                visible={isValid.boolSnack}
+                duration={4000}
+                onDismiss={()=>{setIsValid({boolSnack: false})}}
+                style={{backgroundColor:"red",}}
+                
+            >
+                {isValid.message}
+            </Snackbar>
         </View>
         
         
