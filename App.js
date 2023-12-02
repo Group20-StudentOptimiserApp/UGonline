@@ -13,6 +13,16 @@ import * as Font from 'expo-font'
 import { auth } from './firebase';
 import { Text, View } from 'react-native';
 
+
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './redux/reducers'
+import thunk from 'redux-thunk';
+import Main from './components/Main';
+
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
 let customFonts = {
   Poppins_400Regular,
   Poppins_500Medium,
@@ -86,9 +96,9 @@ export default class App extends React.Component {
     }
 
     return (
-      <View>
-        <Text>Yess!! You are signed In!</Text>
-      </View>
+      <Provider store={store}>
+        <Main/>
+      </Provider>
     );
   }
 }
