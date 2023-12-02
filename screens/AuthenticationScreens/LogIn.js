@@ -92,7 +92,7 @@ const LoginScreen =({navigation}) => {
                     inputStyle={styles.inputstyle}
                     />
             </View>
-            <Button onPress={() => onSignIn()} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: 'Poppins_500Medium',}} buttonStyle={styles.buttonS} title='Log in'/>
+            <Button onPress={() => onSignIn()} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: font.medium,}} buttonStyle={styles.buttonS} title='Log in'/>
             <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D'}}>Don't have an account? <Text style={{color: color.secondary, fontFamily: font.bold}} onPress={()=>navigation.navigate('SignUp')}>Sign up here</Text></Text>
             <Text style={{fontFamily: font.regular, fontSize: 16, color: '#1E1D1D', marginTop: 20}} onPress={()=> navigation.navigate('ForgotPassword')}>Forgot your password?</Text>
             </View>
