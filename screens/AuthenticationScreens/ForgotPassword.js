@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 
 import { View, Text, StyleSheet, Alert } from "react-native"
 import { auth } from "../../firebase";
