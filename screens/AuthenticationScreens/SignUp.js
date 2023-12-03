@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler'
+
 import React from "react";
 import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity, ScrollView } from "react-native";
 import { Button, Input} from "@rneui/themed";
