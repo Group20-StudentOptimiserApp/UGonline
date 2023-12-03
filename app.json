@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "UGonline",
-    "slug": "UGonline",
+    "slug": "ugonline",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.emmanuelcobbina.ugonline"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "04cbb8ff-1c11-439d-872e-5482851f8827"
+      }
     }
   }
 }
