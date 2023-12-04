@@ -1,5 +1,3 @@
-import 'react-native-gesture-handler';
-
 import { View, Text, StyleSheet, Alert } from "react-native"
 import { auth } from "../../firebase";
 import { useState } from "react"
@@ -43,6 +41,7 @@ const ForgotPassword = ({navigation}) =>{
                         style={{paddingRight: 12,}}
                 />}
                     type="email"
+                    autoFocus
                     value={email}
                     onChangeText={(email)=> setEmail(email)}
                     style={styles.input}

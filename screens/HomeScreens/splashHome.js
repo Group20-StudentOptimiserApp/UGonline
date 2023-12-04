@@ -1,5 +1,3 @@
-import 'react-native-gesture-handler';
-
 import { StyleSheet, View, Image } from "react-native";
 import { Button, Text} from "@rneui/themed";
 import { color, font} from "../../global/styles";

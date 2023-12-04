@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import React from "react";
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity, ScrollView, Alert } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView, Alert } from "react-native";
 import { Button, Input} from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
@@ -64,7 +64,7 @@ const LoginScreen =({navigation}) => {
                         size={16}
                         color= '#999999'
                 />}
-                    // autoFocus 
+                    autoFocus 
                     type="email"
                     value={email}
                     onChangeText={(email)=>setEmail(email)}

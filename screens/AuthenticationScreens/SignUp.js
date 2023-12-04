@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import React from "react";
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import { Button, Input} from "@rneui/themed";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
@@ -163,7 +163,6 @@ const SignUpScreen =({navigation}) => {
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
-                    // onSubmitEditing={signUp}
                     />
             </View>
             <Button onPress={()=>onSignUp()} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: font.medium,}} buttonStyle={styles.buttonS} title='Sign up'/>
