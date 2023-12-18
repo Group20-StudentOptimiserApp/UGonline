@@ -58,7 +58,7 @@ export const VeterinaryScience = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -115,7 +115,7 @@ export const AgriculturalEngineering = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -174,7 +174,7 @@ export const BiomedicalEngineering = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -232,7 +232,7 @@ export const ComputerEngineering = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -290,7 +290,7 @@ export const MaterialScienceEngineering = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>

@@ -33,7 +33,7 @@ export const ContinuingandDistance = () => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../assets/screenImages/UoG.png')}
+            source={require('../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -86,7 +86,7 @@ export const InformationStudies = () => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../assets/screenImages/UoG.png')}
+            source={require('../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -139,7 +139,7 @@ export const EducationandLeadership = () => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../assets/screenImages/UoG.png')}
+            source={require('../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>

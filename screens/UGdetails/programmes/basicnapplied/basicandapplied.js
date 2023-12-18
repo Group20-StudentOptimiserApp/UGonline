@@ -60,7 +60,7 @@ export const ComputerScience = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -118,7 +118,7 @@ export const EarthScience = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -176,7 +176,7 @@ export const StatisticsandActuarialScience = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -234,7 +234,7 @@ export const Chemistry = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -292,7 +292,7 @@ export const Mathematics = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
@@ -350,7 +350,7 @@ export const Physics = ({navigation}) => {
         <View  style={styles.container}>
             <View>
             <Image
-            source={require('../../../../assets/screenImages/UoG.png')}
+            source={require('../../../../assets/projectImages/UoG.png')}
             style={{width: 160, height: 160}}
             />
             </View>
