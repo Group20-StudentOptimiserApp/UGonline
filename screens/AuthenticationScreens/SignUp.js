@@ -30,6 +30,10 @@ const SignUpScreen =({navigation}) => {
             setIsValid({bool : true, boolSnack: true, message: "Username field cannot be empty"})
             return;
         }
+        if(name.charAt(0) == " "){
+            setIsValid({bool : true, boolSnack: true, message: "Your first character cannot be empty, please clear the white space at begining of name"})
+            return;
+        }
         if(name.length < 3){
             setIsValid({bool : true, boolSnack: true, message: "Username must have at least 3 characters"})
             return;
