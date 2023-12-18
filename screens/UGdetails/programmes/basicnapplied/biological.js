@@ -22,8 +22,8 @@ const userDetails = (Programme, Department, School, navigation) =>{
 const confirmDetails = (Programme, Department, School, navigation) =>{
 
     Alert.alert('Confirm details', "Continue with the details selected?",[
-        {text: 'Cancel'},
-        {text: 'Okay', onPress: userDetails(Programme, Department, School, navigation)}
+        {text: 'Cancel', onPress: ()=> navigation.goBack()},
+        {text: 'Okay', onPress: () => userDetails(Programme, Department, School, navigation)}
     ])
 }
 
