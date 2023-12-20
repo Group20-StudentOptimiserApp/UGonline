@@ -37,17 +37,18 @@ const L300 = ({currentUser}) => {
                 {courseData.map((data)=>{
                     return(
                         <TouchableOpacity activeOpacity={0.7} key={data.key} style={styles.secondaryContainer}>
-                            <View style={{width: '21%',}}>
-                                <View style={{backgroundColor: color.dark, borderRadius: 4, width: 1, height: 1, padding: 28, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-start'}}>
+                            <View style={{width: '15%',}}>
+                                <View style={{backgroundColor: color.dark, borderRadius: 4, width: 1, height: 1, padding: 18, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-start', marginRight: 6}}>
                                     <Image
                                         source={require('../../../assets/forcourses.png')}
-                                        style={{position: 'absolute'}}
+                                        style={{position: 'absolute', height: 24, width: 28}}
+                                        
                                     />
                                 </View>
                             </View>
-                            <View style={{width: '61%', }}>
-                                <Text style={{ fontFamily: font.semiBold, fontSize: 20, color: color.dark}}>{data['Course Code']}</Text>
-                                <Text style={{ fontFamily: font.medium, fontSize: 16, color: color.dark}}>{data['Course Name']}</Text>
+                            <View style={{width: '65%', }}>
+                                <Text style={{ fontFamily: font.semiBold, fontSize: 20, color: color.dark, includeFontPadding:false, marginTop: -4}}>{data['Course Code']}</Text>
+                                <Text style={{ fontFamily: font.medium, fontSize: 16, color: color.dark, includeFontPadding:false, marginTop: -4}}>{data['Course Name']}</Text>
                             </View>
                             <View style={{width: '18%'}}>
                             <Pressable style={{backgroundColor: color.light, borderRadius: 4, height: 1, padding:16, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-end' }}>
