@@ -14,6 +14,9 @@ import complainImg from '../../assets/complain.png'
 import scheduleImg from '../../assets/schedule.png'
 import weeklyImg from '../../assets/weekly.png'
 import { SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+
+
 
 const Home = ({currentUser}) => {
     const [news, setNews] = useState([])
@@ -53,7 +56,7 @@ const Home = ({currentUser}) => {
         {id: 3, text: "Weekly", text1: "Update", img: weeklyImg, color: "#1B75FF"},
         {id: 4, text: "Weekly", text1: "Schedule", img: scheduleImg, color: "#858EF8"},
     ]
-  return (
+    return (
     <View style={styles.Container}>
     <SafeAreaView>
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -90,8 +93,8 @@ const Home = ({currentUser}) => {
                 placeholder="Search for a course" 
                 placeholderTextColor={color.primaryAlt}
                 rightIcon={<Ionicons
-                name={"search"}
-                size={24}
+                    name={"search"}
+                    size={24}
                 color= {color.primaryAlt}
                 />}
                 type="search"
@@ -103,14 +106,14 @@ const Home = ({currentUser}) => {
             />
         </View>
         <View style={{flexDirection: 'row', marginTop: 16,}}>
-            <TouchableOpacity style={{alignItems: 'center'}}>
+            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center'}}>
                 <Image
                     source={require('../../assets/Cash.png')}
                     style={{width: 48, height: 48}}
                 />
                 <Text style={styles.supportText}>Pay Fees</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{alignItems: 'center', paddingLeft: 36}}>
+            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center', paddingLeft: 36}}>
                 <Image
                     source={require('../../assets/Support.png')}
                     style={{width: 48, height: 48}}
@@ -131,7 +134,7 @@ const Home = ({currentUser}) => {
                         />
                         <View style={{width: "40%", alignSelf: 'center',}} >
                             <Text style={{fontFamily: font.regular, fontSize: 16, textAlign: 'center', alignSelf: 'flex-end'}}>{data.Topic}</Text>
-                            <TouchableOpacity style={{ backgroundColor: color.secondary, marginTop: 8, width:120, alignSelf: 'flex-end', borderRadius: 50, paddingVertical: 4}}>
+                            <TouchableOpacity activeOpacity={0.7} style={{ backgroundColor: color.secondary, marginTop: 8, width:120, alignSelf: 'flex-end', borderRadius: 50, paddingVertical: 4}}>
                                 <Text style={{fontFamily: font.medium, fontSize: 14, color: "#fff", textAlign: 'center', }}>Read More</Text>
                             </TouchableOpacity>
                         </View>
@@ -145,7 +148,7 @@ const Home = ({currentUser}) => {
                 {someData.map((data)=> {
                     const {id, text, text1, img, color} = data
                     return(
-                        <TouchableOpacity key={id} style={{width: "45%", height: 120, backgroundColor: color, borderRadius: 20,}}>
+                        <TouchableOpacity key={id} style={{width: "45%", height: 120, backgroundColor: color, borderRadius: 20,}} activeOpacity={0.7}>
                             <Image
                             source={img}
                             style={{width: "100.5%", height: '100.5%', borderRadius: 20 }}
@@ -161,6 +164,7 @@ const Home = ({currentUser}) => {
         </View>
     </View>
     </ScrollView>
+    <StatusBar style="auto" translucent={false} />
     </SafeAreaView>
     </View>
   )

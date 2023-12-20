@@ -41,7 +41,7 @@ const EducationSchools = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {educationSchoolsData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=> navigation.navigate(data['School Name'])}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=> navigation.navigate(data['School Name'])}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['School Name']}</Text>
                             </View>

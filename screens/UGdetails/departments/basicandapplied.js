@@ -47,7 +47,7 @@ export const BiologicalScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -100,7 +100,7 @@ export const EngineeringScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -153,7 +153,7 @@ export const PhysicalnMathematicalScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -206,7 +206,7 @@ export const VeterinarySciences = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -259,7 +259,7 @@ export const AgricultureScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>storeDetails(navigation, data['Department Name'])}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>

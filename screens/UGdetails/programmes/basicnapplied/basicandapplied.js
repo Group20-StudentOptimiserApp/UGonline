@@ -68,7 +68,7 @@ export const ComputerScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>
@@ -126,7 +126,7 @@ export const EarthScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>
@@ -184,7 +184,7 @@ export const StatisticsandActuarialScience = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>
@@ -242,7 +242,7 @@ export const Chemistry = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>
@@ -300,7 +300,7 @@ export const Mathematics = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>
@@ -358,7 +358,7 @@ export const Physics = ({navigation}) => {
             <View style={styles.collegeConatiner}>
                 {programmeData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} onPress={()=>confirmDetails(data['Programme Name'], Department, School, navigation)}>
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Programme Name']}</Text>
                             </View>

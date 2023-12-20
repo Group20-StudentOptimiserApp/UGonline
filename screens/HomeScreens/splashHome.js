@@ -1,6 +1,7 @@
 import { StyleSheet, View, Image } from "react-native";
 import { Button, Text} from "@rneui/themed";
 import { color, font} from "../../global/styles";
+import { StatusBar } from "expo-status-bar";
 
 
 const Splash = ({navigation}) =>{
@@ -33,6 +34,7 @@ const Splash = ({navigation}) =>{
                     onPress={()=>navigation.navigate('Login')}
                     />
             </View>
+            <StatusBar style="auto"/>
         </View>
     )
 }

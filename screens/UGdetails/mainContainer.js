@@ -20,6 +20,7 @@ import Main from "../../components/Main";
 
 import { createStackNavigator } from "@react-navigation/stack"
 import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const Stack = createStackNavigator();
 
@@ -97,6 +98,7 @@ const MainUGContainer = () => {
 
 
         </Stack.Navigator>
+        <StatusBar style="auto" translucent={false} />
     </NavigationContainer>    
     )
     

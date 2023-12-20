@@ -3,6 +3,8 @@ import { color, font } from '../../global/styles'
 import { Avatar } from '@rneui/themed'
 import { AntDesign } from '@expo/vector-icons'
 import { auth } from '../../firebase'
+import { StatusBar } from "expo-status-bar";
+
 const Profile = ({currentUser}) => {
 
   const signOutUser = () => {
@@ -53,19 +55,20 @@ const Profile = ({currentUser}) => {
               {data.map((data)=>{
                 const {id, text, icon, press} = data
                 return(
-                  <Pressable onPress={press} key={id} style={{flexDirection: 'row', marginBottom: 24, alignItems:'center'}}>
+                  <Pressable onPress={press} key={id} style={{flexDirection: 'row', marginBottom: 18, alignItems:'center'}}>
                       <AntDesign
                         name= {icon}
                         color= {color.primary}
-                        size={32}
+                        size={24}
                         style={{paddingRight: 12}}
                       />
-                      <Text style={{fontFamily: font.regular, fontSize: 24}}>{text}</Text>
+                      <Text style={{fontFamily: font.regular, fontSize: 18}}>{text}</Text>
                   </Pressable>
                 )
               })}
           </View>
         </View>
+        <StatusBar style="auto" translucent={false} />
         </ScrollView>
     </View>
   )

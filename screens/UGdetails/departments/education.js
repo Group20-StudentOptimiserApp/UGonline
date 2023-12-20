@@ -41,7 +41,7 @@ export const ContinuingandDistance = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -94,7 +94,7 @@ export const InformationStudies = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -147,7 +147,7 @@ export const EducationandLeadership = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>

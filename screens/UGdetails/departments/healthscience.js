@@ -43,7 +43,7 @@ export const BiomedicalandAlliedHealthScience = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -96,7 +96,7 @@ export const SchoolofNursingandMidwifery= () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -149,7 +149,7 @@ export const SchoolofPharmacy= () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -202,7 +202,7 @@ export const SchoolofPublicHealth = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -256,7 +256,7 @@ export const UGDentalSchool= () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>
@@ -309,7 +309,7 @@ export const UGMedicalSchool = () => {
             <View style={styles.collegeConatiner}>
                 {departmentData.map((data)=>{
                     return(
-                        <TouchableOpacity key={data.key} >
+                        <TouchableOpacity activeOpacity={0.7}  key={data.key} >
                             <View style={styles.college}>
                                 <Text style={{fontSize: 18, color: color.dark, textAlign: 'center', fontFamily: font.bold}}>{data['Department Name']}</Text>
                             </View>

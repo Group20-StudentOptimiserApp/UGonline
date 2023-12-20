@@ -65,7 +65,8 @@ export class Main extends Component {
             tabBarLabelStyle: {
               fontFamily: font.medium,
               fontSize: 12,
-            }
+            },
+            tabBarHideOnKeyboard:true
           }}
         >
           <Tab.Screen
