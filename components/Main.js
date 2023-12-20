@@ -15,6 +15,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
+
 
 export class Main extends Component {
 
@@ -46,7 +48,9 @@ export class Main extends Component {
     const Profile1 = () =>{
       return <Profile currentUser={currentUser}/>
     }
-    
+    const Course1 = () =>{
+      return <Courses currentUser={currentUser}/>
+    }
     const MainHome = () => {
       return(
         <Tab.Navigator
@@ -83,7 +87,7 @@ export class Main extends Component {
           />
           <Tab.Screen
             name="Courses"
-            component={Courses}
+            component={Course1}
             options={{
               tabBarLabel: 'Courses',
               tabBarIcon: ({focused}) => (
@@ -119,6 +123,7 @@ export class Main extends Component {
         <Stack.Navigator>
           <Stack.Screen name="MainHome" component={MainHome} options={{headerShown:false}}/>
         </Stack.Navigator>
+        <StatusBar style="auto" translucent={false} />
       </NavigationContainer>
     )
 
