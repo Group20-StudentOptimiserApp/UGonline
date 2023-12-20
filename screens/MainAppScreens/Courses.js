@@ -37,7 +37,7 @@ const Courses = ({currentUser}) => {
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: color.primary,
-        tabBarLabelStyle: { fontSize: 14, fontFamily: font.semiBold },
+        tabBarLabelStyle: { fontSize: 12, fontFamily: font.semiBold },
         // lazy: false,
       }}
     >
