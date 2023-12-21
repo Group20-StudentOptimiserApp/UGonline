@@ -1,4 +1,4 @@
-import { View, Text,StyleSheet, Pressable, ScrollView } from 'react-native'
+import { View, Text,StyleSheet, Pressable, ScrollView, SafeAreaView } from 'react-native'
 import { color, font } from '../../global/styles'
 import { Avatar } from '@rneui/themed'
 import { AntDesign } from '@expo/vector-icons'
@@ -35,6 +35,7 @@ const Profile = ({currentUser}) => {
   ]
   return (
     <View style={styles.Container}>
+      <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <View style={styles.firstContainer}>
@@ -70,6 +71,7 @@ const Profile = ({currentUser}) => {
         </View>
         <StatusBar style="auto" translucent={false} />
         </ScrollView>
+        </SafeAreaView>
     </View>
   )
 }

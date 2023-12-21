@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { View } from 'react-native';
+import { Platform, SafeAreaView, View } from 'react-native';
 import { color, font } from '../global/styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,6 +16,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export class Main extends Component {
@@ -53,6 +54,7 @@ export class Main extends Component {
     }
     const MainHome = () => {
       return(
+        // <SafeAreaView style={{flex: 1}}>
         <Tab.Navigator
           initialRouteName="Home"
           screenOptions={{
@@ -60,9 +62,12 @@ export class Main extends Component {
             headerShown:false,
             tabBarStyle: {
               position: 'absolute',
-              height: 64,
+              height: Platform.OS === "android" ? 64 : 88,
               paddingTop: 6,
-              paddingBottom: 6,
+              paddingBottom: Platform.OS === "android" ? 8 : 32 ,
+              // marginBottom: -10,
+              borderWidth: 0,
+              borderBottomWidth: 0,
               borderTopColor: "#ffffff",
               borderTopWidth: 0.1,
             },
@@ -116,6 +121,7 @@ export class Main extends Component {
             }}
             />
         </Tab.Navigator>
+        // </SafeAreaView>
       )
     }
     return(

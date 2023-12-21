@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import { db } from '../../../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native';
 
 const L100 = ({currentUser}) => {
     const [courseData, setCourseData] = useState([])
@@ -30,6 +31,7 @@ const L100 = ({currentUser}) => {
 
   return (
     <View style={styles.Container}>
+
         <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <View style={styles.primaryContainer}>
