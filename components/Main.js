@@ -54,7 +54,7 @@ export class Main extends Component {
     }
     const MainHome = () => {
       return(
-        // <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1, backgroundColor: "#FFF"}}>
         <Tab.Navigator
           initialRouteName="Home"
           screenOptions={{
@@ -62,9 +62,11 @@ export class Main extends Component {
             headerShown:false,
             tabBarStyle: {
               position: 'absolute',
-              height: Platform.OS === "android" ? 64 : 88,
+              // height: Platform.OS === "android" ? 64 : 88,
+              height: 64,
               paddingTop: 6,
-              paddingBottom: Platform.OS === "android" ? 8 : 32 ,
+              // paddingBottom: Platform.OS === "android" ? 8 : 32 ,
+              paddingBottom: 4,
               // marginBottom: -10,
               borderWidth: 0,
               borderBottomWidth: 0,
@@ -121,7 +123,7 @@ export class Main extends Component {
             }}
             />
         </Tab.Navigator>
-        // </SafeAreaView>
+        </SafeAreaView>
       )
     }
     return(

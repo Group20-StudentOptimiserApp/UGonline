@@ -75,7 +75,7 @@ const Home = ({currentUser}) => {
                     />
                 <View style={{alignSelf: 'center',}}>
                     <Text style={{fontFamily: font.regular, fontSize: 16, color: "#757575", textAlignVertical: 'center' }}>{greetings}</Text>
-                    <Text style={{fontFamily: font.medium, fontSize: 20, color: color.primary, textAlignVertical:'center', maxWidth: 220}}>{currentUser.name}</Text>
+                    <Text style={{fontFamily: font.medium, fontSize: 20, color: color.primary, textAlignVertical:'center', maxWidth: 200}}>{currentUser.name}</Text>
                 </View>
             </View>
 
