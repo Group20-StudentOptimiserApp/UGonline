@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState, useCallback} from 'react'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal, Linking } from 'react-native'
 import { color, font } from '../../global/styles';
 import { Avatar, Input } from '@rneui/themed';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from "@expo/vector-icons";
 
 import { collection, getDocs } from "firebase/firestore";
@@ -20,6 +20,9 @@ import { StatusBar } from 'expo-status-bar';
 
 const Home = ({currentUser}) => {
     const [news, setNews] = useState([])
+    const [open, setOpen] = useState(false)
+
+
     const getNews = async ()  =>{
         const getNewsData = [];
 
@@ -56,11 +59,69 @@ const Home = ({currentUser}) => {
         {id: 3, text: "Weekly", text1: "Update", img: weeklyImg, color: "#1B75FF"},
         {id: 4, text: "Weekly", text1: "Schedule", img: scheduleImg, color: "#858EF8"},
     ]
+
+    const academicFeesLink = 'https://sts.ug.edu.gh/services/pay/academic';
+    const residentialFeesLink = 'https://sts.ug.edu.gh/services/pay/residential';
+    const internshipFeesLink = 'https://sts.ug.edu.gh/services/pay/internship';
+
+
+    const OpenURLButton = ({url, children}) => {
+        const handlePress = useCallback(async () => {
+          const supported = await Linking.canOpenURL(url);
+      
+          if (supported) {
+            await Linking.openURL(url);
+          } 
+        }, [url]);
+      
+        return (
+            <TouchableOpacity activeOpacity={0.7} onPress={handlePress}>
+                <View style={styles.feesContainer}>
+                    <Text style={{fontSize: 18, color: color.primary, textAlign: 'center', fontFamily: font.semiBold}}>{children}</Text>
+                </View>
+            </TouchableOpacity>
+        )
+      };
+    const PayFees = () => {
+        return(
+            <SafeAreaView>
+                <View>
+                    <OpenURLButton url={academicFeesLink}>Make Payment for Academic Fees</OpenURLButton>
+                    <OpenURLButton url={residentialFeesLink}>Make Payment for Residential Fees</OpenURLButton>
+                    <OpenURLButton url={internshipFeesLink}>Make Payment for Internship Fees</OpenURLButton>
+                </View>
+            </SafeAreaView>
+        )
+    }
+
+
     return (
     <View style={styles.Container}>
     <SafeAreaView>
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.container}>
+    <Modal visible={open} animationType="slide">
+            <SafeAreaView style={{flex: 1, }}>
+            <View style={{flex: 1, backgroundColor: color.background,}}>
+            <View style={{flex: 1, marginHorizontal: 20, marginTop: 16 }}>
+                <MaterialIcons
+                    name="close"
+                    size={24}
+                    onPress={()=>setOpen(false)}
+                    style={{marginBottom: 10,
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        padding: 6,
+                        borderColor: '#ddd',
+                        alignSelf: "flex-end",}}
+                    />
+                    <PayFees/>
+                    </View>
+                    </View>
+            </SafeAreaView>
+        <StatusBar style="auto" translucent={false} />
+        </Modal>
+
         <View style={{marginHorizontal: 26,}}>
         <View style={styles.topContainer}>
             <View style={styles.userContainer}>
@@ -106,7 +167,7 @@ const Home = ({currentUser}) => {
             />
         </View>
         <View style={{flexDirection: 'row', marginTop: 16,}}>
-            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center'}}>
+            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center'}} onPress={()=>setOpen(true)}>
                 <Image
                     source={require('../../assets/Cash.png')}
                     style={{width: 48, height: 48}}
@@ -256,6 +317,17 @@ const styles = StyleSheet.create({
         paddingTop: 4,
         paddingHorizontal: 10,
         borderRadius: 20,
+    },
+    feesContainer: {
+        borderRadius: 10,
+        backgroundColor: "#FFF",
+        shadowRadius: 8,
+        padding: 18,
+        shadowOpacity: 0.2,
+        shadowColor: "#ccc",
+        shadowOffset: {width: 1, height: 1},
+        elevation: 4,
+        marginTop: 18,    
     }
 
 })
