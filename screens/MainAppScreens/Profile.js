@@ -27,11 +27,11 @@ const Profile = ({currentUser}) => {
   }
   const data = [
     {id: 1, text: 'Personal Information', icon: 'user', press: userPersonalInformation},
-    {id: 2, text: 'Academic Information', icon: 'book', press: userAcademicInformation},
-    {id: 3, text: 'Settings', icon: 'setting', press: userSettings},
-    {id: 4, text: 'Help', icon: 'questioncircleo', press: userHelp},
-    {id: 5, text: 'Privacy and Security', icon: 'Safety', press: privacynSecurity},
-    {id: 6, text: 'Logout', icon: 'logout', press: signOutUser},
+    {id: 2, text: 'Privacy and Security', icon: 'Safety', press: privacynSecurity},
+    {id: 3, text: 'Logout', icon: 'logout', press: signOutUser},
+    // {id: 4, text: 'Academic Information', icon: 'book', press: userAcademicInformation},
+    // {id: 5, text: 'Settings', icon: 'setting', press: userSettings},
+    // {id: 6, text: 'Help', icon: 'questioncircleo', press: userHelp},
   ]
   return (
     <View style={styles.Container}>
@@ -49,8 +49,9 @@ const Profile = ({currentUser}) => {
               overlayContainerStyle={{backgroundColor: '#D3F5E3',}}
               containerStyle={{marginVertical: 8}}
             />
-            <Text style={{textAlign:'center', fontFamily: font.semiBold, fontSize: 26, }}>{currentUser.name}</Text>
-            <Text style={{textAlign:'center', fontFamily: font.regular, fontSize: 16}}>{currentUser.Programme}</Text>
+            <Text style={{textAlign:'center', fontFamily: font.semiBold, fontSize: 26, color: color.primary }}>{currentUser.name}</Text>
+            <Text style={{textAlign:'center', fontFamily: font.regular, fontSize: 16, marginVertical: 4 }}>{currentUser.Programme}</Text>
+            <Text style={{textAlign:'center', fontFamily: font.regular, fontSize: 16}}>{currentUser.studentId}</Text>
           </View>
           <View style={styles.secondContainer}>
               {data.map((data)=>{
