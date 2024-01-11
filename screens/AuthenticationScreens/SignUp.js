@@ -15,6 +15,7 @@ import { Snackbar } from "react-native-paper";
 const SignUpScreen =({navigation}) => {
 
     const [email, setEmail] = useState('');
+    const [studentId, setStudentId] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
@@ -25,7 +26,16 @@ const SignUpScreen =({navigation}) => {
 
     const onSignUp = () => {
         let regex = /^[a-zA-Z\s]+$/;
+        let idregex = new RegExp('^[0-9]+$');
 
+        if(studentId.length !== 8){
+            setIsValid({bool : true, boolSnack: true, message: "Student Id should be 8 numerical values"})
+            return;
+        }
+        if(idregex.test(studentId) === false){
+            setIsValid({bool : true, boolSnack: true, message: "Invalid input type for student Id. Only accepts numerical values"})
+            return;
+        }
         if(name.length == 0){
             setIsValid({bool : true, boolSnack: true, message: "Username field cannot be empty"})
             return;
@@ -61,7 +71,8 @@ const SignUpScreen =({navigation}) => {
                 .doc(auth.currentUser.uid)
                 .set({
                     name,
-                    email
+                    email,
+                    studentId,
                 })
                 console.log(result)
             })
@@ -121,6 +132,22 @@ const SignUpScreen =({navigation}) => {
                     type="email"
                     value={email}
                     onChangeText={(email)=>setEmail(email)}
+                    style={styles.input}
+                    inputContainerStyle={styles.inputContainer}
+                    inputStyle={styles.inputstyle}
+                    />
+                
+                <Input
+                    placeholder="Student Id" 
+                    leftIcon={<FontAwesome
+                        name='id-card'
+                        size={16}
+                        color= '#999999'
+                />}
+                    // autoFocus 
+                    type="number"
+                    value={studentId}
+                    onChangeText={(studentId)=>setStudentId(studentId)}
                     style={styles.input}
                     inputContainerStyle={styles.inputContainer}
                     inputStyle={styles.inputstyle}
@@ -256,7 +283,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 16,
-        marginBottom: 16,
+        marginBottom: 40,
 
     },
 
