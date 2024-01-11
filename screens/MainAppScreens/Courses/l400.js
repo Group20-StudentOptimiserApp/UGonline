@@ -6,9 +6,16 @@ import { db } from '../../../firebase';
 import { collection, getDocs } from "firebase/firestore";
 import { StatusBar } from 'expo-status-bar';
 
-const L400 = ({currentUser}) => {
-    const [courseData, setCourseData] = useState([])
+import { useNavigation } from '@react-navigation/native';
 
+const L400 = ({currentUser}) => {
+
+    const navigation = useNavigation();
+    const [courseCode, setCourseCode] = useState('')
+    const [courseName, setCourseName] = useState('')
+
+    const [courseData, setCourseData] = useState([])
+    
     const getCourse = async ()  =>{
         const getCourseData = [];
 
@@ -35,7 +42,10 @@ const L400 = ({currentUser}) => {
             <View style={styles.primaryContainer}>
                 {courseData.map((data)=>{
                     return(
-                        <TouchableOpacity activeOpacity={0.7} key={data.key} style={styles.secondaryContainer}>
+                        <TouchableOpacity activeOpacity={0.7} key={data.key} style={styles.secondaryContainer} onPress={()=> {navigation.navigate('CourseDetails', {
+                            coursesCode: data['Course Code'],
+                            coursesName: data['Course Name'],
+                        })}} >
                             <View style={{width: '15%',}}>
                                 <View style={{backgroundColor: color.dark, borderRadius: 4, width: 1, height: 1, padding: 18, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-start', marginRight: 6}}>
                                     <Image

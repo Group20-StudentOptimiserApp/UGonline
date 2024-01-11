@@ -10,10 +10,13 @@ import L300 from './Courses/l300';
 import L400 from './Courses/l400';
 import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { SafeAreaFrameContext, SafeAreaProvider } from 'react-native-safe-area-context';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import CourseDetails from './Courses/courseDetails';
 
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
 
 
 const Courses = ({currentUser}) => {
@@ -38,10 +41,9 @@ const Courses = ({currentUser}) => {
     )
   }
 
-
+  const All = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* <View style={{flex: 1}}> */}
       <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: color.primary,
@@ -55,11 +57,19 @@ const Courses = ({currentUser}) => {
       <Tab.Screen name='L400' component={Level400} />
       
     </Tab.Navigator>
-    {/* </View> */}
-    {/* <StatusBar style="auto" translucent={false} /> */}
 
-    </SafeAreaView>
+  </SafeAreaView>
   )
+}
+
+return (
+  <NavigationContainer independent={true} >
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name='Courses' component={All} />
+      <Stack.Screen name='CourseDetails' component={CourseDetails}/>
+    </Stack.Navigator>
+  </NavigationContainer>
+)
 }
 
 export default Courses;
