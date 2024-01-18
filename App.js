@@ -7,7 +7,7 @@ import LoginScreen from './screens/AuthenticationScreens/LogIn';
 import SignUpScreen from './screens/AuthenticationScreens/SignUp';
 import Splash from './screens//HomeScreens/splashHome';
 import ForgotPassword from './screens/AuthenticationScreens/ForgotPassword';
-import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700Bold, Poppins_800ExtraBold} from '@expo-google-fonts/poppins';
+import { Poppins_300Light,Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold, Poppins_700Bold, Poppins_800ExtraBold} from '@expo-google-fonts/poppins';
 import * as Font from 'expo-font'
 
 import { auth } from './firebase';
@@ -26,6 +26,7 @@ import { StatusBar } from "expo-status-bar";
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 let customFonts = {
+  Poppins_300Light,
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_600SemiBold,

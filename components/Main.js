@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import { Platform, SafeAreaView, View } from 'react-native';
+import { Platform, SafeAreaView, View, ScrollView } from 'react-native';
 import { color, font } from '../global/styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,14 +9,13 @@ import MainUGContainer from '../screens/UGdetails/mainContainer';
 import Home from '../screens/MainAppScreens/Home';
 import Courses from '../screens/MainAppScreens/Courses';
 import Profile from '../screens/MainAppScreens/Profile';
-import OtherInfo from '../screens/MainAppScreens/otherInfo';
+import Assignments from '../screens/MainAppScreens/Assignments';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export class Main extends Component {
@@ -86,7 +85,7 @@ export class Main extends Component {
             options={{
               tabBarLabel: 'Home',
               tabBarIcon: ({focused}) => (
-                <MaterialCommunityIcons name="home" color={focused? color.primary: "#999999"} size={32} />
+                <MaterialCommunityIcons name="home-variant" color={focused? color.primary: "#999999"} size={34} />
               ),
               tabBarActiveTintColor: color.primary,
               // tabBarActiveBackgroundColor: color.primary,
@@ -103,12 +102,12 @@ export class Main extends Component {
             }}
           />
           <Tab.Screen
-            name="OtherInfo"
-            component={OtherInfo}
+            name="Assignments"
+            component={Assignments}
             options={{
-              tabBarLabel: 'OtherInfo',
+              tabBarLabel: 'Assignments',
               tabBarIcon: ({focused}) => (
-                <MaterialCommunityIcons name="notebook" color={focused? color.primary: "#999999"} size={32}/>
+                <MaterialCommunityIcons name="file-document-edit" color={focused? color.primary: "#999999"} size={32}/>
               ),
             }}
           />
@@ -126,10 +125,27 @@ export class Main extends Component {
         </SafeAreaView>
       )
     }
+    const Notification = () =>{
+      return(
+        <View style={{flex: 1, backgroundColor: color.background,}}>
+          <SafeAreaView>
+          <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{flex: 1,marginTop: 16,marginBottom: 50,}}></View>
+          </ScrollView>
+          <StatusBar style="auto" translucent={false} />
+          </SafeAreaView>
+        </View>
+      )
+    }
     return(
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="MainHome" component={MainHome} options={{headerShown:false}}/>
+          <Stack.Screen name="Notification" component={Notification} options={{headerTitle: 'Your Notifications', headerShadowVisible:false,
+            headerTintColor: color.primary,
+            headerStyle: { backgroundColor: color.background },
+            headerTitleStyle: {fontFamily: font.semiBold,}
+            }}/>
         </Stack.Navigator>
         <StatusBar style="auto" translucent={false} />
       </NavigationContainer>
