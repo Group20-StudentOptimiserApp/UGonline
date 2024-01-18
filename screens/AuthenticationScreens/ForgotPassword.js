@@ -52,7 +52,7 @@ const ForgotPassword = ({navigation}) =>{
             </View>
             <Button onPress={passwordReset} containerStyle={styles.button} titleStyle={{fontSize: 20,fontFamily: font.medium,}} buttonStyle={styles.buttonS} title='Send password reset link'/>
             <Text style={{fontFamily : font.medium, fontSize: 14, paddingLeft: 8, paddingRight: 8 }}>Check your email or spam folder to find the password reset link </Text>
-            <StatusBar style="auto"/>
+            <StatusBar style="auto" translucent={false} />
             
         </View>
     )

@@ -34,7 +34,7 @@ const Splash = ({navigation}) =>{
                     onPress={()=>navigation.navigate('Login')}
                     />
             </View>
-            <StatusBar style="auto"/>
+            <StatusBar style="auto" translucent={false} />
         </View>
     )
 }

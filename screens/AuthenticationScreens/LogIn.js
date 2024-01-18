@@ -113,6 +113,7 @@ const LoginScreen =({navigation}) => {
             >
                 {isValid.message}
             </Snackbar>
+    <StatusBar style="auto" translucent={false} />
         </View>
         
         

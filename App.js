@@ -20,6 +20,8 @@ import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk';
 import Main from './components/Main';
 
+import { StatusBar } from "expo-status-bar";
+
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -91,6 +93,7 @@ export default class App extends React.Component {
             <Stack.Screen name="SignUp" component={SignUpScreen} options={{headerShown:false}}/>
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} options={{headerShown:false}}/>
           </Stack.Navigator>
+        <StatusBar style="auto" translucent={false} />
         </NavigationContainer>
       );
     }
