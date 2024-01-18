@@ -13,6 +13,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import CourseDetails from './Courses/courseDetails';
+import Lessons from './Courses/CourseDetails/lessons';
+import Resources from './Courses/CourseDetails/resources';
+import Syllabus from './Courses/CourseDetails/syllabus';
+import Exams from './Courses/CourseDetails/pastExams';
+import Tests from './Courses/CourseDetails/pastQuizzes';
+import Assignments from './Courses/CourseDetails/assignments';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -67,6 +73,12 @@ return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name='Courses' component={All} />
       <Stack.Screen name='CourseDetails' component={CourseDetails}/>
+      <Stack.Screen name='Lessons' component={Lessons}/>
+      <Stack.Screen name='Syllabus' component={Syllabus}/>
+      <Stack.Screen name='Resources' component={Resources}/>
+      <Stack.Screen name='Assignments' component={Assignments}/>
+      <Stack.Screen name='Exams' component={Exams}/>
+      <Stack.Screen name='Tests' component={Tests}/>
     </Stack.Navigator>
   </NavigationContainer>
 )
