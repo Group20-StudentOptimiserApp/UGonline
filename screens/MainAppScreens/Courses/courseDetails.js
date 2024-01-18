@@ -21,7 +21,7 @@ const CourseDetails = ({route}) => {
                 {/* <SafeAreaView> */}
                 <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.container}>
-                    <View style={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', columnGap: 16, rowGap:16, justifyContent: 'center'}}>
+                    <View style={{width: '100%', flexDirection: 'row', flexWrap: 'wrap', columnGap: 14, rowGap:16, justifyContent:'center'}}>
                         <TouchableOpacity activeOpacity={0.7} style={{width: "45%", height: 120, backgroundColor: '#1597BB', borderRadius: 20, justifyContent: 'center', alignItems: 'center', paddingHorizontal:4}} onPress={()=> {navigation.navigate('Syllabus', {
                             coursesCode: coursesCode,
                             coursesName: coursesName,
@@ -68,9 +68,9 @@ const CourseDetails = ({route}) => {
                             <Text style={{fontFamily: font.semiBold, fontSize: 20, color: '#fff', textAlign: 'center'}}>Gradebook</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.7} style={{width: "45%", height: 120, backgroundColor: '#4477CE', borderRadius: 20, justifyContent: 'center', alignItems: 'center', paddingHorizontal:4}}>
+                        {/* <TouchableOpacity activeOpacity={0.7} style={{width: "45%", height: 120, backgroundColor: '#4477CE', borderRadius: 20, justifyContent: 'center', alignItems: 'center', paddingHorizontal:4}}>
                             <Text style={{fontFamily: font.semiBold, fontSize: 20, color: '#fff', textAlign: 'center'}}>Schedule</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
                 </ScrollView>
@@ -82,7 +82,10 @@ const CourseDetails = ({route}) => {
     return(
         <SafeAreaView style={{flex: 1, }}>
             <Stack.Navigator>
-                <Stack.Screen name={fullCourseName} component={Details}/>
+                <Stack.Screen name={fullCourseName} component={Details} options={{headerTitle: fullCourseName, headerShadowVisible:false,
+                    headerTintColor: color.primary,
+                    headerStyle: { backgroundColor: color.background },
+                    headerTitleStyle: {fontFamily: font.semiBold,}}}/>
             </Stack.Navigator>
         </SafeAreaView>   
     )
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
     },
     container: {
         // flex: 1,
-        marginTop: 28,
+        marginTop: 8,
         marginBottom: 100,
     },
 })

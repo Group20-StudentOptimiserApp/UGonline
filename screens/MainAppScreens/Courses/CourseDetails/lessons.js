@@ -137,7 +137,10 @@ const navigation = useNavigation();
     return(
         <SafeAreaView style={{flex: 1, }}>
             <Stack.Navigator>
-                <Stack.Screen name={title} component={Lesson}/>
+                <Stack.Screen name={title} component={Lesson} options={{headerTitle:title, headerShadowVisible:false,
+                    headerTintColor: color.primary,
+                    headerStyle: { backgroundColor: color.background },
+                    headerTitleStyle: {fontFamily: font.semiBold}}}/>
                 <Stack.Screen name='LessonDoc' component={OnLessonDoc} options={{headerTitle : ''}}/>
             </Stack.Navigator>
         </SafeAreaView>   
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        marginTop: 24,
+        marginTop: 8,
         marginBottom: 64,
         paddingHorizontal: 16,
 
