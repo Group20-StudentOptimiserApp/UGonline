@@ -19,7 +19,8 @@ import Syllabus from './Courses/CourseDetails/syllabus';
 import Exams from './Courses/CourseDetails/pastExams';
 import Tests from './Courses/CourseDetails/pastQuizzes';
 import Assignments from './Courses/CourseDetails/assignments';
-
+import TestnQuizzes from './Courses/CourseDetails/testnQuizzes';
+import Gradebook from './Courses/CourseDetails/gradebook';
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -79,6 +80,8 @@ return (
       <Stack.Screen name='Assignments' component={Assignments}/>
       <Stack.Screen name='Exams' component={Exams}/>
       <Stack.Screen name='Tests' component={Tests}/>
+      <Stack.Screen name='TestnQuizzes' component={TestnQuizzes}/>
+      <Stack.Screen name='Gradebook' component={Gradebook}/>
     </Stack.Navigator>
   </NavigationContainer>
 )
