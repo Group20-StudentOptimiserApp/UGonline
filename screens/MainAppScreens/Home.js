@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useCallback} from 'react'
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal, Linking } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal, Linking, Alert } from 'react-native'
 import { color, font } from '../../global/styles';
 import { Avatar, Input } from '@rneui/themed';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { Ionicons } from "@expo/vector-icons";
-
+import { MaterialCommunityIcons, MaterialIcons, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../firebase';
 
+import { sendEmail } from '../../components/sendemail';
 
 import timeImg from '../../assets/time.png'
 import complainImg from '../../assets/complain.png'
@@ -16,12 +15,60 @@ import weeklyImg from '../../assets/weekly.png'
 import { SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
+import { useNavigation } from '@react-navigation/native';
+
+import emailjs from '@emailjs/browser';
 
 
 const Home = ({currentUser}) => {
     const [news, setNews] = useState([])
+    const [counsellingDays, setCounsellingDays] = useState([])
     const [open, setOpen] = useState(false)
+    const [open1, setOpen1] = useState(false)
+    
+    const [email, setEmail] = useState('')
 
+    const [open2, setOpen2] = useState(false)
+    const [newsHeader, setNewsHeader] = useState('')
+    const [newsBody, setNewsBody] = useState([])
+
+
+    const [counEmail, setCounEmail] = useState('')
+    const [counMessage, setCounMessage] = useState('')
+
+    const navigation = useNavigation();
+
+    const sendConsulltEmail = (message) => {
+        // sendEmail(
+        //     'ceaboateng@st.ug.edu.gh',
+        //     'We need your feedback',
+        //     'UserName, we need 2 minutes of your time to fill this quick survey [link]',
+        // { bcc: 'cobbboat@gmail.com' }
+        // ).then(() => {
+        //     console.log('Your message was successfully sent!');
+        // });
+        setCounMessage(message)
+        const serviceId = 'service_gxn5lp8';
+        const templateId = 'template_n6sdb99';
+        const publicKey = 'x_F3lBUNsZOyZ3Kr7';
+
+        const templateParams ={
+            from_name: currentUser.name,
+            reply_to: counEmail,
+            to_name: 'Guidance and Counselling',
+            message: counMessage,
+        }
+        emailjs.send(serviceId, templateId, templateParams, publicKey)
+        .then((response)=>{
+            Alert.alert("Appointment has been booked successfully!")
+            console.log('sent', response)
+        })
+        .catch((error)=>{
+            console.log("couldn't sent email", error)
+            Alert.alert("Failed to book appointment, Please try again!")
+
+        })
+    }
 
     const getNews = async ()  =>{
         const getNewsData = [];
@@ -37,9 +84,24 @@ const Home = ({currentUser}) => {
     });
     setNews(getNewsData);
     }
+
+    const getCounsellingDays = async ()  =>{
+        const getCounsellingDaysData = [];
+
+        const querySnapshot = await getDocs(collection(db, "counsellingdays"));
+        
+        querySnapshot.forEach((doc) => {
+        getCounsellingDaysData.push({
+            ...doc.data(),
+            key: doc.id,
+        });
+    });
+    setCounsellingDays(getCounsellingDaysData);
+    }
     
     useEffect(()=>{
         getNews();
+        getCounsellingDays();
     }, [])
     
     let today = new Date()
@@ -94,7 +156,20 @@ const Home = ({currentUser}) => {
         )
     }
 
+    // let userFirstName = currentUser.name[0];
+    let userFirstName
+    if (currentUser.name.charAt(0) == undefined){
+        userFirstName = 'O';
+    }
+    else{
+        userFirstName = currentUser.name.charAt(0)
+    }
 
+    const newsModal = (newsHeader, newsBody) =>{
+        setOpen2(true);
+        setNewsHeader(newsHeader);
+        setNewsBody(newsBody);
+    }
     return (
     <View style={styles.Container}>
     <SafeAreaView>
@@ -109,29 +184,123 @@ const Home = ({currentUser}) => {
                     size={24}
                     onPress={()=>setOpen(false)}
                     style={{marginBottom: 10,
-                        borderWidth: 1,
-                        borderRadius: 10,
+                        // borderWidth: 1,
+                        // borderRadius: 10,
                         padding: 6,
                         borderColor: '#ddd',
-                        alignSelf: "flex-end",}}
+                        alignSelf: "flex-end",
+                        color: color.primary,
+                        // fontWeight: 'bold'
+                    }}
                     />
                     <PayFees/>
                     </View>
                     </View>
             </SafeAreaView>
         <StatusBar style="auto" translucent={false} />
-        </Modal>
+    </Modal>
+
+    {/* Welcome to the guidance and counselling unit  */}
+    <Modal visible={open1} animationType="slide">
+            <SafeAreaView style={{flex: 1, }}>
+            <View style={{flex: 1, backgroundColor: color.background,}}>
+            <View style={{flex: 1, marginHorizontal: 20, marginTop: 16 }}>
+                <View style={{display: 'flex', flexDirection: 'row'}}>
+                <MaterialIcons
+                    name="arrow-back-ios"
+                    size={24}
+                    onPress={()=>setOpen1(false)}
+                    style={{marginBottom: 10,
+                        // borderWidth: 1,
+                        // borderRadius: 10,
+                        paddingVertical: 6,
+                        paddingRight: 6,
+                        borderColor: '#ddd',
+                        alignSelf: "flex-start",}}
+                    />
+                    <Text style={{color: color.primary, fontSize: 20, fontFamily: font.semiBold, }}>Welcome to the guidance and counselling unit</Text>
+                </View>
+                <Text style={{color: "#5A5A5A", fontFamily: font.regular, fontSize: 20, marginTop: 40}}>Book an appointment with us now!</Text>
+                <View style={{marginTop: 30, width: '105%',  marginLeft: -10, }}>
+                <Input
+                        placeholder="Enter your student email address here" 
+                        leftIcon={<FontAwesome
+                            name='envelope'
+                            size={20}
+                            color= '#999999'
+                            style={{paddingRight: 12,}}
+                            
+                    />}
+                        type="email"
+                        value={counEmail}
+                        onChangeText={(email)=>setCounEmail(email)}
+                        style={{fontSize: 18, fontFamily: font.regular,}}
+                        inputContainerStyle={{borderWidth: 0, borderColor: color.light, padding: 4, paddingLeft: 14, paddingRight: 14, borderRadius: 10, backgroundColor: color.light, shadowRadius: 8, shadowOpacity: 0.2, shadowColor: "#ccc", shadowOffset: {width: 1, height: 1},elevation: 4,}}
+                        />
+                </View>
+                <Text style={{color: "#000000", fontFamily: font.regular, fontSize: 20, marginTop: 24}}>Select any of the available dates and time to book.</Text>
+                {counsellingDays.map((data)=> {
+                    return(
+                        <TouchableOpacity activeOpacity={0.7} key={data.key} onPress={() => sendConsulltEmail(data.Day)}>
+                            <View style={styles.counselContainer}>
+                                <Text style={{fontSize: 16, color: '#000000', textAlign: 'center', fontFamily: font.regular}}>{data.Day}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    )
+                })}
+                
+            </View>
+            </View>
+            </SafeAreaView>
+        <StatusBar style="auto" translucent={false} />
+    </Modal>
+
+    <Modal visible={open2} animationType="slide">
+            <SafeAreaView style={{flex: 1, }}>
+            <View style={{flex: 1, backgroundColor: color.background,}}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={{flex: 1, marginHorizontal: 20, marginTop: 16 }}>
+                <View style={{display: 'flex', flexDirection: 'row'}}>
+                <MaterialIcons
+                    name="arrow-back-ios"
+                    size={24}
+                    onPress={()=>setOpen2(false)}
+                    style={{marginBottom: 10,
+                        // borderWidth: 1,
+                        // borderRadius: 10,
+                        paddingVertical: 6,
+                        paddingRight: 6,
+                        borderColor: '#ddd',
+                        alignSelf: "flex-start",}}
+                    />
+                    <Text style={{color: color.primary, fontSize: 20, fontFamily: font.semiBold, }}>{newsHeader}</Text>
+                </View>
+                {newsBody.map((data)=>{
+                    return(
+                        <View key={data.id}>
+                            <View style={styles.newsBodyContainer}>
+                                <Text style={{fontSize: 16, color: '#000000', textAlign: 'left', fontFamily: font.regular}}>{data}</Text>
+                            </View>
+                        </View>
+                    )
+                })}
+            </View>
+            </ScrollView>
+            </View>
+            </SafeAreaView>
+        <StatusBar style="auto" translucent={false} />
+    </Modal>
 
         <View style={{marginHorizontal: 26,}}>
         <View style={styles.topContainer}>
             <View style={styles.userContainer}>
                     <Avatar
                     rounded
-                    title= {currentUser.name.charAt(0)}
-                    titleStyle={{fontFamily: font.medium, fontSize: 44, color: color.primary}}
+                    title= {userFirstName}
+                    titleStyle={{fontFamily: font.medium, fontSize: 44, color: color.light}}
                     size={72}
                     // activeOpacity = {0.7}
-                    overlayContainerStyle={{backgroundColor: '#D3F5E3',}}
+                    overlayContainerStyle={{backgroundColor: color.primaryAlt,}}
                     containerStyle={{marginRight: 8}}
                     />
                 <View style={{alignSelf: 'center',}}>
@@ -146,6 +315,7 @@ const Home = ({currentUser}) => {
                 color= {color.primary}
                 size={32}
                 style={{paddingTop: 9}}
+                onPress={()=>navigation.navigate('Notification')}
             />
             </View>
         </View>
@@ -174,7 +344,7 @@ const Home = ({currentUser}) => {
                 />
                 <Text style={styles.supportText}>Pay Fees</Text>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center', paddingLeft: 36}}>
+            <TouchableOpacity activeOpacity={0.7} style={{alignItems: 'center', paddingLeft: 36}} onPress={()=>setOpen1(true)}>
                 <Image
                     source={require('../../assets/Support.png')}
                     style={{width: 48, height: 48}}
@@ -187,6 +357,8 @@ const Home = ({currentUser}) => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={styles.newsContainer}>
                 {news.map((data)=> {
+                    const newsHead = data.Topic
+                    const newsBody = data.Body
                     return(
                         <View key={data.key} style={styles.newscontainer}>
                         <Image
@@ -194,8 +366,8 @@ const Home = ({currentUser}) => {
                             style={{width: "60%", height: '100%', }}
                         />
                         <View style={{width: "40%", alignSelf: 'center',}} >
-                            <Text style={{fontFamily: font.regular, fontSize: 16, textAlign: 'center', alignSelf: 'flex-end'}}>{data.Topic}</Text>
-                            <TouchableOpacity activeOpacity={0.7} style={{ backgroundColor: color.secondary, marginTop: 8, width:120, alignSelf: 'flex-end', borderRadius: 50, paddingVertical: 4}}>
+                            <Text style={{fontFamily: font.regular, fontSize: 16, textAlign: 'center', alignSelf: 'flex-end'}}>{newsHead}</Text>
+                            <TouchableOpacity activeOpacity={0.7} style={{ backgroundColor: color.secondary, marginTop: 8, width:120, alignSelf: 'flex-end', borderRadius: 50, paddingVertical: 4}} onPress={()=>newsModal(newsHead, newsBody)}>
                                 <Text style={{fontFamily: font.medium, fontSize: 14, color: "#fff", textAlign: 'center', }}>Read More</Text>
                             </TouchableOpacity>
                         </View>
@@ -328,6 +500,25 @@ const styles = StyleSheet.create({
         shadowOffset: {width: 1, height: 1},
         elevation: 4,
         marginTop: 18,    
+    },
+    counselContainer: {
+        borderRadius: 10,
+        backgroundColor: "#F2D7FF",
+        shadowRadius: 8,
+        paddingVertical: 12,
+        shadowOpacity: 0.2,
+        shadowColor: "#ccc",
+        shadowOffset: {width: 1, height: 1},
+        elevation: 4,
+        marginTop: 18,
+        paddingHorizontal: 4   
+    },
+    newsBodyContainer: {
+        borderRadius: 10,
+        backgroundColor: "#D7E9FF",
+        paddingVertical: 16,
+        marginBottom: 18,
+        paddingHorizontal: 14   
     }
 
 })
