@@ -137,7 +137,10 @@ const navigation = useNavigation();
     return(
         <SafeAreaView style={{flex: 1, }}>
             <Stack.Navigator>
-                <Stack.Screen name={title} component={Exam}/>
+                <Stack.Screen name={title} component={Exam} options={{headerTitle:title, headerShadowVisible:false,
+                    headerTintColor: color.primary,
+                    headerStyle: { backgroundColor: color.background },
+                    headerTitleStyle: {fontFamily: font.semiBold}}}/>
                 <Stack.Screen name='ExamsDoc' component={OnExamsDoc} options={{headerTitle : ''}}/>
             </Stack.Navigator>
         </SafeAreaView>   

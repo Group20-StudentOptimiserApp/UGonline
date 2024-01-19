@@ -66,6 +66,7 @@ const L100 = ({currentUser}) => {
                         <TouchableOpacity activeOpacity={0.7} key={data.key} style={styles.secondaryContainer} onPress={()=> {navigation.navigate('CourseDetails', {
                             coursesCode: data['Course Code'],
                             coursesName: data['Course Name'],
+                            currentUserName: currentUser.name,
                         })}} >
                             <View style={{width: '15%',}}>
                                 <View style={{backgroundColor: color.dark, borderRadius: 4, width: 1, height: 1, padding: 18, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-start', marginRight: 6}}>
@@ -98,6 +99,7 @@ const L100 = ({currentUser}) => {
                         <TouchableOpacity activeOpacity={0.7} key={data.key} style={styles.secondaryContainer} onPress={()=> {navigation.navigate('CourseDetails', {
                             coursesCode: data['Course Code'],
                             coursesName: data['Course Name'],
+                            currentUserName: currentUser.name,
                         })}} >
                             <View style={{width: '15%',}}>
                                 <View style={{backgroundColor: color.dark, borderRadius: 4, width: 1, height: 1, padding: 18, justifyContent: 'center', alignItems: 'center',width: 1, alignSelf:'flex-start', marginRight: 6}}>

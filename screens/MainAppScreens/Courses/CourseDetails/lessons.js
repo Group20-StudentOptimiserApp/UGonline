@@ -23,7 +23,7 @@ const Lessons = ({route}) => {
 
 
     const {coursesCode, coursesName} = route.params;
-    let title = 'Lessons for ' + coursesCode;
+    let title = 'Resources for ' + coursesCode;
 
 
     const get = async ()  =>{

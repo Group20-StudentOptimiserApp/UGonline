@@ -87,10 +87,11 @@ const Assignments = () => {
                   <Text style={{ fontFamily: font.light, fontSize: 14, color: color.dark, includeFontPadding:false,}}>Lorem ipsum dolor sit amet consectetur. Massa et massa auctor feugiat hendrerit nam. Sed libero enim quis feugiat amet eu. Nibh aliquam dictum sagittis sed varius mauris arcu. Massa elementum ullamcorper in sed. Sed velit magne</Text>
               </View>
             </TouchableOpacity>
+            <View style={{flexDirection:'row', width: "100%", columnGap: 20}}>
             <TouchableOpacity activeOpacity={0.7} style={{backgroundColor: color.primaryAlt,
       padding: 16,
       borderRadius: 8,
-      marginBottom: 16,}} onPress={()=> {navigation.navigate('AssignmentDeets')}}>
+      marginBottom: 16, width: "47%"}} onPress={()=> {navigation.navigate('AssignmentDeets')}}>
               <View>
                   <Text style={{ fontFamily: font.semiBold, fontSize: 20, color: color.dark, includeFontPadding:false, marginTop: -4}}>Files</Text>
               </View>
@@ -102,6 +103,21 @@ const Assignments = () => {
                 <Text style={{color: color.light, fontFamily: font.regular, fontSize: 14}}>Assignment 1</Text>
               </View>
             </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7} style={{backgroundColor: color.primaryAlt,
+      padding: 16,
+      borderRadius: 8,
+      marginBottom: 16, width: "47%"}} onPress={()=> {navigation.navigate('AssignmentDeets')}}>
+              <View>
+                  <Text style={{ fontFamily: font.semiBold, fontSize: 20, color: color.dark, includeFontPadding:false, marginTop: -4}}>Files</Text>
+              </View>
+              <View>
+              <View style={{backgroundColor: color.light, paddingVertical: 8, width: "100%", marginBottom: 8, marginTop: 4}}>
+                <Text style={{fontFamily: font.regular, fontSize: 12}}>.pdf, .docs</Text>
+              </View>
+                <Text style={{color: color.light, fontFamily: font.regular, fontSize: 14}}>Upload your files here to submit</Text>
+              </View>
+            </TouchableOpacity>
+            </View>
           </View>
           </View>
         </ScrollView>

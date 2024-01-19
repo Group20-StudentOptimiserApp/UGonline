@@ -23,7 +23,7 @@ const Resources = ({route}) => {
 
 
     const {coursesCode, coursesName} = route.params;
-    let title = 'Resources for ' + coursesCode;
+    let title = 'Lessons for ' + coursesCode;
 
 
     const get = async ()  =>{
@@ -101,7 +101,12 @@ const navigation = useNavigation();
 
 
                 <View style={styles.container}>
-                {data.map((data)=>{
+
+                <View style={{width: "100%", backgroundColor: color.secondaryAlt, borderTopRightRadius: 8, borderBottomRightRadius: 8, height: 70, flexDirection: 'row'}}>
+                    <View style={{height: "100%", width: 12, backgroundColor:"#FF5151"}}></View>
+                    <Text style={{color: "#5A5A5A", fontFamily: font.semiBold, fontSize: 15, textAlign: 'center', alignSelf: 'center', paddingLeft: 8}}>There are no items in this page visible to you</Text>
+                </View>
+                {/* {data.map((data)=>{
                     const title = data.Title;
                     const uriLink = data.Uri;
                     return(
@@ -127,7 +132,7 @@ const navigation = useNavigation();
 
                 </TouchableOpacity>
                     )
-                })}
+                })} */}
                 </View>
                 </ScrollView>
             </View>
@@ -137,7 +142,10 @@ const navigation = useNavigation();
     return(
         <SafeAreaView style={{flex: 1, }}>
             <Stack.Navigator>
-                <Stack.Screen name={title} component={Resource}/>
+                <Stack.Screen name={title} component={Resource} options={{headerTitle:title, headerShadowVisible:false,
+                    headerTintColor: color.primary,
+                    headerStyle: { backgroundColor: color.background },
+                    headerTitleStyle: {fontFamily: font.semiBold}}}/>
                 <Stack.Screen name='ResourcesDoc' component={OnResourcesDoc} options={{headerTitle : ''}}/>
             </Stack.Navigator>
         </SafeAreaView>   
